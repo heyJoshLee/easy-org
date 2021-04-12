@@ -1,0 +1,10 @@
+<h1>Hello World</h1>
+<% if logged_in? %>
+  <h2><%=current_user.username %></h2>
+<% end %>
+
+<%= link_to "Go to my organizations", my_organizations_path %>
+
+
+
+

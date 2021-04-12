@@ -1,0 +1,15 @@
+<%= link_to "< All my organizations", my_organizations_path %>
+<h1><%=@organization.name%>'s Projects</h1>
+<%= link_to new_organization_project_path(@organization) do %>
+  <div class="btn btn-primary float-right">
+    Create new Project
+  </div>
+<% end %>
+
+<ul class="list-group mt-5">
+  <% @organization.projects.each do |project| %>
+    <%= link_to organization_project_path(@organization, project) do %> 
+      <li class="list-group-item list-group-item-action"><%=project.name %> </li>
+    <% end %>
+  <% end %>
+</ul>

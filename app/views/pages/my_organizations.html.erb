@@ -1,0 +1,8 @@
+<h1>Organizations</h1>
+<ul class="list-group">
+  <% current_user.organizations.each do |org| %>
+    <%= link_to org do %>
+      <li class="list-group-item list-group-item-action"><%= org.name %> </li>
+    <% end %>
+  <% end %>
+</ul>
