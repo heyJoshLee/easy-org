@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :organization_users
   has_many :organizations, through: :organization_users
   has_many :comments
+  has_many :messages
   
   validates :username, presence: true, length: { minimum: 3, maximum: 15}, uniqueness: { case_sensitive: false }
   validates :email, presence: true, length: { minimum: 3, maximum: 50}, uniqueness: { case_sensitive: false }

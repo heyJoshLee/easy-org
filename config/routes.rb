@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "my_organizations", to: "pages#my_organizations"
   resources :organizations do
     resources :projects do
+      resources :messages
       resources :posts do
         resources :comments
       end

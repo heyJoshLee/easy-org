@@ -38,3 +38,15 @@
 .flexbox {
   display: flex;
 }
+
+.chatbox-container {
+  width: 300px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.chatbox-content {
+  height: 400px;
+  overflow-y: auto;
+}

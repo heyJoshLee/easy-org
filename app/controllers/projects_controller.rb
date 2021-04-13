@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
     @archieved_posts = Post.where(status: "Archived").paginate(page: params[:page], per_page: 5)
     @complete_posts = Post.where(status: "Complete").paginate(page: params[:page], per_page: 5)
     @organization = @project.organization
+    @messages = @project.messages
   end
 
   private

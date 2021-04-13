@@ -1,0 +1,21 @@
+<div id="chatbox-id" class="chatbox-container">
+  <div class="card">
+    <div class="card-header primary" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#chatbox" aria-expanded="true" aria-controls="chatbox">
+          Chat
+        </button>
+      </h5>
+    </div>
+    <div id="chatbox" class="collapse" aria-labelledby="headingOne" data-parent="#chatbox-id">
+      <div class="card-body chatbox-content">
+        <%= render @messages %>
+
+      </div>
+
+      <%= form_with(model: [@organization, @project, Message.new], local: true) do |f| %>
+          <%= f.text_field :body, class: "form-control", id: "chatbox-input-field" %>
+        <% end %>
+    </div>
+  </div>
+</div>
