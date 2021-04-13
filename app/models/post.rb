@@ -8,11 +8,11 @@ class Post < ApplicationRecord
 
 
   def button_color
-    if priority == "Low"
+    if priority == 4
       "info"
-    elsif priority == "Medium"
+    elsif priority == 3
       "success"
-    elsif priority == "Higg"
+    elsif priority == 2
       "warning"
     else
       "danger"

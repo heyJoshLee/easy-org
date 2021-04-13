@@ -1,15 +1,33 @@
+
 <%= link_to "< All my organizations", my_organizations_path %>
-<h1><%=@organization.name%>'s Projects</h1>
-<%= link_to new_organization_project_path(@organization) do %>
-  <div class="btn btn-primary float-right">
-    Create new Project
+<div class="row">
+  <div class="col-6">
+    <h1><%=@organization.name%>'s Projects</h1>
+  </div>
+  <div class="col-6">
+  <%= link_to new_organization_project_path(@organization) do %>
+    <div class="btn btn-primary float-right">
+      Create new Project
+    </div>
   </div>
 <% end %>
 
-<ul class="list-group mt-5">
+</div>
+
+
+<section class="flexbox">
   <% @organization.projects.each do |project| %>
-    <%= link_to organization_project_path(@organization, project) do %> 
-      <li class="list-group-item list-group-item-action"><%=project.name %> </li>
-    <% end %>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to project.name, organization_project_path(@organization, project) %></h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <%= link_to organization_project_path(@organization, project) do %>
+            <div class="btn btn-primary">Enter</div>
+          <%end %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</section>
+

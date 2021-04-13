@@ -1,9 +1,6 @@
 <%= link_to "< All projects", @project.organization %>
 <h1><%=@project.name%></h1>
 
-
-<h2>Issues</h2>
-
 <!-- Button trigger modal -->
 <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 <i class="fas fa-plus"></i>   New Post
@@ -16,7 +13,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,38 +21,47 @@
       <div class="modal-body">
         <%= render "posts/form" %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
 </div>
 
 
+
+
+
+
+
+
 <!-- Navbar -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Active</a>
+    <a class="nav-link active" id="active-tab" data-toggle="tab" href="#active" role="tab" aria-controls="active" aria-selected="true">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Completed</a>
+    <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Archived</a>
+    <a class="nav-link" id="archived-tab" data-toggle="tab" href="#archived" role="tab" aria-controls="archived" aria-selected="false">Archived</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="archived" aria-selected="false">Files</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
     <%= render @active_posts %>
     <%= will_paginate @active_posts, list_classes: %w(pagination justify-content-center mt-3), previous_label: "Previous", next_label: "Next" %>  
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
     <%= render @complete_posts %>
     <%= will_paginate @complete_posts, list_classes: %w(pagination justify-content-center mt-3), previous_label: "Previous", next_label: "Next" %> 
   </div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  <div class="tab-pane fade" id="archived" role="tabpanel" aria-labelledby="archived-tab">
     <%= render @archieved_posts %>
+    <%= will_paginate @archieved_posts, list_classes: %w(pagination justify-content-center mt-3), previous_label: "Previous", next_label: "Next" %> 
+  </div>
+  <div class="tab-pane fade" id="files" role="tabpanel" aria-labelledby="files-tab">
+    <p>Files go here</p>
     <%= will_paginate @archieved_posts, list_classes: %w(pagination justify-content-center mt-3), previous_label: "Previous", next_label: "Next" %> 
   </div>
 </div>

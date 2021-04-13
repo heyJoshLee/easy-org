@@ -1,8 +1,13 @@
 <h1>Organizations</h1>
 <ul class="list-group">
   <% current_user.organizations.each do |org| %>
-    <%= link_to org do %>
-      <li class="list-group-item list-group-item-action"><%= org.name %> </li>
-    <% end %>
+    <li>
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2 class="text-center card-text"><%= link_to org.name, org %></h2>
+      </div>
+    </div>
+    </li>
   <% end %>
 </ul>

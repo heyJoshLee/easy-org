@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 
-
   def create
     @project = Project.find(params[:project_id])
     post = @project.posts.build(post_params)
@@ -13,9 +12,7 @@ class PostsController < ApplicationController
     end
   end
 
-
   private
-
 
   def post_params
     params.require(:post).permit!
