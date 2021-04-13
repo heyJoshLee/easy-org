@@ -1,0 +1,5 @@
+<%= form_with(model: [@organization, @project, post, Comment.new], local: true) do |f| %>
+  
+    <%= f.text_area :body, class: "form-control", placeholder: "Write a comment..." %>
+    <%= f.submit "Submit", class: "btn btn-primary float-right" %>
+<% end %>

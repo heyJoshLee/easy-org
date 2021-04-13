@@ -1,0 +1,26 @@
+<p>New post</p>
+<%= form_with(model: [@organization, @project, Post.new], local: true) do |f| %>
+  
+  <div class="form-group">
+  <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div> 
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div> 
+
+  <div class="form-group">
+    <%= f.label :priority %>
+    <%= f.select(:priority, ["Low", "Medium", "High", "Urgent"], class: "form-control") =%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select(:status, ["Active", "Complete", "Archived"], class: "form-control") =%>
+  </div>
+
+  <%= f.submit "Create comment", class: "btn btn-primary" %>
+
+  <% end %>

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get "logout", to: "sessions#destroy"
   get "my_organizations", to: "pages#my_organizations"
   resources :organizations do
-    resources :projects
+    resources :projects do
+      resources :posts do
+        resources :comments
+      end
+    end
   end
   resources :users, except: [:new]
 end

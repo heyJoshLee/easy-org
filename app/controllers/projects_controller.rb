@@ -18,8 +18,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
     @project = Project.find(params[:id])
+    @active_posts = Post.where(status: "Active").paginate(page: params[:page], per_page: 5)
+    @archieved_posts = Post.where(status: "Archived").paginate(page: params[:page], per_page: 5)
+    @complete_posts = Post.where(status: "Complete").paginate(page: params[:page], per_page: 5)
+    @organization = @project.organization
   end
 
   private
