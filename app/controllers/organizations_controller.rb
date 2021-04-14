@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
 
 
-  before_action :set_organization, only: [:show]
+  before_action :set_organization, only: [:show, :users, :new_user]
 
   def new
     @organization = Organization.new
@@ -26,11 +26,33 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
   end
 
+  def users
+    @user = User.new
+    @users = @organization.users
+  end
+
+  def new_user
+    user = User.new(user_params)
+    if user.save
+      @organization.users << user
+      flash[:success] = "New user created."
+      redirect_to users_organization_path(@organization)
+    else
+      flash.now[:alert] = "There was a problem and the user was not created."
+      render "users"
+    end
+    
+  end
+
 
   private
 
   def organization_params
     params.require(:organization).permit(:name)
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
   end
 
   def set_organization

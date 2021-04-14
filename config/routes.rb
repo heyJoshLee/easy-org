@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get "logout", to: "sessions#destroy"
   get "my_organizations", to: "pages#my_organizations"
   resources :organizations do
+    member do
+      get "users"
+      post "users", to: "organizations#new_user"
+    end
     resources :projects do
       resources :messages
       resources :posts do

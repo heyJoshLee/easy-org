@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 
+  before_action :set_project, only: [:show]
   before_action :set_organization, only: [:new, :create, :create]
 
   def new
@@ -18,7 +19,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
     @active_posts = @project.posts.where(status: "Active").paginate(page: params[:page], per_page: 5)
     @archieved_posts = @project.posts.where(status: "Archived").paginate(page: params[:page], per_page: 5)
     @complete_posts = @project.posts.where(status: "Complete").paginate(page: params[:page], per_page: 5)
@@ -26,10 +26,15 @@ class ProjectsController < ApplicationController
     @messages = @project.messages
   end
 
+
   private
 
   def set_organization
     @organization = Organization.find(params[:organization_id])
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 
   def project_params
