@@ -8,12 +8,12 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    organization = Organization.new(organization_params)
+    @organization = current_user.organizations.build(organization_params)
     
-    if organization.save
-      organization_user = OrganizationUser.new(organization_id: organization.id, user_id: current_user.id)
+    if @organization.save
+      current_user.organizations << @organization
       flash[:success] = "Your organization has been complete"
-      redirect_to organization
+      redirect_to @organization
     else
       render 'new'
     end

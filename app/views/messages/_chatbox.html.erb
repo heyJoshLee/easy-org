@@ -1,4 +1,4 @@
-<div id="chatbox-id" class="chatbox-container">
+<div id="chatbox-id" data-room-id="<%=@project.id%>" class="chatbox-container">
   <div class="card">
     <div class="card-header primary" id="headingOne">
       <h5 class="mb-0">
@@ -8,7 +8,7 @@
       </h5>
     </div>
     <div id="chatbox" class="collapse" aria-labelledby="headingOne" data-parent="#chatbox-id">
-      <div class="card-body chatbox-content">
+      <div id="messages-container" class="card-body chatbox-content">
         <%= render @messages %>
 
       </div>

@@ -5,7 +5,9 @@ class MessagesController < ApplicationController
     @project = Project.find(params[:project_id])
     message.project_id = @project.id
     if message.save
-      redirect_to organization_project_path(@project.organization, @project)
+      ChatRoomChannel.broadcast_to @project.id,
+                              body: message.body,
+                              user: message.user.username
     else
       puts "ERROR"
     end
@@ -16,5 +18,6 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body)
   end
+
 
 end

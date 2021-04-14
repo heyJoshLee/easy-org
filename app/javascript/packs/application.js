@@ -15,9 +15,14 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+export const scroll_bottom = () => {
+  let childrenNum = $("#messages-container").children.length;
+  if (childrenNum > 0) {
+    $("#chatbox-id").scrollTop($("#messages-container p").last().scrollHeight);
+  }
+}
+
 
 $(document).on('turbolinks:load', function() {
-
-
-  
+  scroll_bottom();  
 });
