@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :require_user, only: [:create]
+
   def create
     message = current_user.messages.build(message_params)
     @project = Project.find(params[:project_id])

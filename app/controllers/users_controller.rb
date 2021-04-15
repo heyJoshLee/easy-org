@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "User created."
+
+
+      UserMailer.with(user: @user).welcome_email.deliver_now
+
+
       redirect_to root_path
     else
       render 'new'

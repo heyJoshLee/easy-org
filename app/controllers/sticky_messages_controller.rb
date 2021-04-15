@@ -1,12 +1,14 @@
 class StickyMessagesController < ApplicationController
 
   def create
-    
     @sticky_item
+    @organization
     if params[:sticky_type] == "organization"
       @sticky_item = Organization.find(params[:sticky_type_id])
+      @organization = @sticky_item
     else
       @sticky_item = Project.find(params[:sticky_type_id])
+      @organization = @sticky_item.organization
     end
     @sticky_message = @sticky_item.sticky_messages.build(sticky_message_params)
     @sticky_message.user_id = current_user.id

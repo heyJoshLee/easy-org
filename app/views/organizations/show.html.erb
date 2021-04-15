@@ -1,38 +1,41 @@
 
 <%= link_to "< All my organizations", my_organizations_path %>
 <div class="row">
-  <div class="col-6">
+  <div class="col-5">
     <h1><%=@organization.name%>'s Projects</h1>
   </div>
 
-  <div class="col-3">
-    <%= link_to new_organization_project_path(@organization) do %>
-      <div class="btn btn-primary float-right">
-        <i class="fas fa-plus"></i> Create new Project
-      </div>
+  <div class="col-7">
+    <% if current_user.is_admin_of(@organization.id) %>
+      <%= link_to new_organization_project_path(@organization) do %>
+        <div class="btn btn-primary float-right">
+          <i class="fas fa-plus"></i> New Project
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if current_user.is_admin_of(@organization.id) %>
+      <%= link_to users_organization_path(@organization) do %>
+        <div class="btn btn-success mr-1 ml-1 float-right">
+          Users
+        </div>
+        <% end %>
+      <% end %>
+
+    <% if current_user.is_admin_of(@organization.id) %>
+      <%= render "sticky_messages/form" %>
     <% end %>
   </div>
 
-  <div class="col-3">
-    <%= link_to users_organization_path(@organization) do %>
-      <div class="btn btn-success float-right">
-        Users
-      </div>
-      <% end %>
-  </div>
 </div>
 
-<div class="row">
-  <div class="col-6">
-    <h2>Stickies</h2>
-  </div>
-  <div class="col-6 float-right">
-    <%= render "sticky_messages/form" %>
-  </div>
+<div class="col-6">
+  <h2>Stickies</h2>
 </div>
+
 
 <div id="sticky-messages-container">
-  <%= render @organization.sticky_messages %>
+  <%= render @organization.sticky_messages, organization: @organization %>
 </div>
 
 <hr / >

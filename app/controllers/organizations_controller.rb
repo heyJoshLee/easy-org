@@ -35,15 +35,29 @@ class OrganizationsController < ApplicationController
   end
 
   def new_user
-    user = User.new(user_params)
-    if user.save
+    user = User.find_by(email: params[:user][:email])
+    if user
       @organization.users << user
-      flash[:success] = "New user created."
+      flash[:success] = "User has been added."
       redirect_to users_organization_path(@organization)
     else
-      flash.now[:alert] = "There was a problem and the user was not created."
+      flash.now[:danger] = "User could not be added."
+      @users = @organization.users
+
       render "users"
     end
+
+
+    
+    # user = User.new(user_params)
+    # if user.save
+    #   @organization.users << user
+    #   flash[:success] = "New user created."
+    #   redirect_to users_organization_path(@organization)
+    # else
+    #   flash.now[:alert] = "There was a problem and the user was not created."
+    #   render "users"
+    # end
     
   end
 

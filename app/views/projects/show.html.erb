@@ -1,19 +1,31 @@
 <%= link_to "< All projects", @project.organization %>
-<h1><%=@project.name%></h1>
 
 
 <div class="row">
   <div class="col-6">
-    <h2>Stickies</h2>
+    <h1><%=@project.name%></h1>
   </div>
-  <div class="col-6 float-right">
-    <%= render "sticky_messages/form" %>
+
+  <div class="col-3 float-right">
+    <% if current_user.is_admin_of(@organization.id) %>
+      <%= render "sticky_messages/form" %>
+    <% end %>
   </div>
+
+  <div class="col-3">
+    <%= render "posts/form" %>
+  </div>
+
 </div>
 <div id="sticky-messages-container">
-  <%= render @project.sticky_messages %>
+
+<%= render @project.sticky_messages, organization: @organization %>
+
 </div>
-<%= render "posts/form" %>
+
+<div class="col-6">
+  <h2>Stickies</h2>
+</div>
 
 
 

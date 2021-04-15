@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#new-post-modal">
-<i class="fas fa-plus"></i>   New Post
+<i class="fas fa-plus"></i>   New Issue
 </button>
 </br>
 </br>
@@ -10,7 +10,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title" id="new-post-modalLabel">New Post</h5>
+      <h5 class="modal-title" id="new-post-modalLabel">New Issue</h5>
         <button type="button" id="post-form-close-button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -37,7 +37,7 @@
           <%= f.select(:status, ["Active", "Complete", "Archived"], class: "form-control") =%>
         </div>
       
-        <%= f.submit "Create comment", class: "btn btn-primary" %>
+        <%= f.submit "Create Issue", class: "btn btn-primary" %>
       
         <% end %>
       </div>

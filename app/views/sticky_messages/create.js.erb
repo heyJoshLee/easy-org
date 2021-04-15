@@ -1,4 +1,4 @@
-$("#sticky-messages-container").prepend("<%= j (render partial: 'sticky_message', locals: { sticky_message: @sticky_message})%>");
+$("#sticky-messages-container").prepend("<%= j (render partial: 'sticky_message', locals: { sticky_message: @sticky_message, organization: @organization})%>");
 $("#sticky-form-body").val("");
 $("#sticky-form-title").val("");
 $("#sticky-form-close").click();
