@@ -30,7 +30,10 @@
     <%= render "sticky_messages/form" %>
   </div>
 </div>
-<%= render @organization.sticky_messages %>
+
+<div id="sticky-messages-container">
+  <%= render @organization.sticky_messages %>
+</div>
 
 <hr / >
 

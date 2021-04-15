@@ -1,30 +1,40 @@
-<div class="accordion" id="accordionExample">
-<div class="card">
-  <div class="card-header" id="headingOne">
-  <div class="row">
-    <div class="row-cols-7">
-        <div class="mt-1 btn btn-sm btn-<%=post.button_color%> "
-        <small><%= post.priority_word%></small> </br>
-      </div> 
-    </div>
-    <h2 class="mb-0">
-      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#post-<%=post.id%>" aria-expanded="true" aria-controls="post-<%=post.id%>">
-        <%= post.title %> 
-      </button>
-    </h2>
-  </div>
-  </div>
-  <div id="post-<%=post.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-    <div class="card-body">
-      <small class="badge badge-pill badge-secondary"><%=post.user.username + " @ " + post.created_at.to_s%></small></br>
-      <div class="row">
-        <div class="col-2"> <%=gravatar_for(post.user)%> </div> 
-        <div class="col"> <%= post.body %> </div>
+<div class="accordion" id="post-<%=post.id%>-accord">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+    <div class="row">
+      <div class="cols-2">
+          <div class="mt-1 btn btn-sm btn-<%=post.button_color%> "
+          <small><%= post.priority_word%></small> </br>
+        </div> 
       </div>
-      <hr/>
+      <div class="col-9">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#post-<%=post.id%>" aria-expanded="true" aria-controls="post-<%=post.id%>">
+            <%= post.title %> 
+          </button>
+          <div>
+          </div>
+        </h2>
+      </div>
+      <div class="col-1 text-right">
+        <%= link_to organization_project_post_path(@organization, @project, post), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete this post?"} do %>
+          <i class="fas fa-trash-alt float-right"></i>
+        <% end %>
+      </div>
     </div>
-    <%= render post.comments, post: post %>
-    <%= render "comments/form", post: post %>
+    </div>
+    <div id="post-<%=post.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#post-<%=post.id%>-accord">
+      <div class="card-body">
+        <small class="badge badge-pill badge-secondary"><%=post.user.username + " @ " + post.created_at.to_s%></small></br>
+        <div class="row">
+          <div class="col-2"> <%=gravatar_for(post.user)%> </div> 
+          <div class="col"> <%= post.body %> </div>
+        </div>
+        <hr/>
+      </div>
+      <div id="post<%=post.id%>-comments-container"
+      <%= render post.comments, post: post %>
+      <%= render "comments/form", post: post %>
+    </div>
   </div>
-</div>
 </div>

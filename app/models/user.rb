@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  before_save { self.email = email.downcase }
+  before_save { self.username = username.downcase }
+
   has_many :posts
   has_many :organization_users
   has_many :organizations, through: :organization_users

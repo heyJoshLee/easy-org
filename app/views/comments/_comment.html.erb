@@ -1,4 +1,4 @@
-<div class="card ml-5 mb-2">
+<div class="card ml-5 mb-2" id="comment<%=comment.id%>-container">
   <div class="card-body">
     <small class="badge badge-pill badge-secondary"><%=comment.created_at %> </small> <br />
     <div class="row">
@@ -6,4 +6,7 @@
       <div class="col"> <%=comment.body%></div>
     </div>
   </div>
+  <%= link_to organization_project_post_comment_path(@organization, @project, post, comment), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete this post?"} do %>
+    <i class="fas fa-trash-alt float-right"></i>
+  <% end %>
 </div>

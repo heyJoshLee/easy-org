@@ -1,15 +1,27 @@
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="sticky-message-<%=sticky_message.id%>-container">
 <div class="card">
   <div class="card-header" id="headingOne">
   <div class="row">
-    <h2 class="mb-0">
-      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#sticky_message-<%=sticky_message.id%>" aria-expanded="true" aria-controls="sticky_message-<%=sticky_message.id%>">
-        <%= sticky_message.title %> 
-      </button>
-    </h2>
+    
+    <div class="col-10">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#sticky_message-<%=sticky_message.id%>" aria-expanded="true" aria-controls="sticky_message-<%=sticky_message.id%>">
+          <%= sticky_message.title %> 
+        </button>
+      </h2>
+    </div>
+
+    <div class="col-2">
+    <%= link_to sticky_message_path(sticky_message), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete this post?"} do %>
+      <i class="fas fa-trash-alt float-right"></i>
+        <% end %>
+    </div>
+
+
+
   </div>
   </div>
-  <div id="sticky_message-<%=sticky_message.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+  <div id="sticky_message-<%=sticky_message.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#sticky-message-<%=sticky_message.id%>-container">
     <div class="card-body">
       <small class="badge badge-pill badge-secondary"><%=sticky_message.user.username + " @ " + sticky_message.created_at.to_s%></small></br>
       <div class="row">

@@ -2,18 +2,33 @@ class CommentsController < ApplicationController
 
 
   def create
+    byebug
     project = Project.find(params[:project_id])
     organization = project.organization
-    post = Post.find(params[:post_id])
-    comment = post.comments.build(comment_params)
+    @post = Post.find(params[:post_id])
+    comment = @post.comments.build(comment_params)
     comment.user_id = current_user.id
+    
+    
+    
     if comment.save
-      puts "success"
+      respond_to do |format|
+        byebug
+
+        format.js
+      end
     else 
       puts "error"
     end
 
-    redirect_to organization_project_path(organization, project)
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   def comment_params

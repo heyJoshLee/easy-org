@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :project
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true, length: { minimum: 3, maximum: 50}, uniqueness: { case_sensitive: false }
   validates :body, presence: true, length: { minimum: 3, maximum: 5000}, uniqueness: { case_sensitive: false }

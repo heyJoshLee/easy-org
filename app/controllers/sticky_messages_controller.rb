@@ -12,12 +12,21 @@ class StickyMessagesController < ApplicationController
     @sticky_message.user_id = current_user.id
 
     if @sticky_message.save
+      respond_to do |format|
+        format.js
+        end
       flash[:success] = "Message saved"
     else
       flash.now[:error] = "Message not saved"
     end
   end
 
+  def destroy
+    @sticky_message = StickyMessage.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
 
