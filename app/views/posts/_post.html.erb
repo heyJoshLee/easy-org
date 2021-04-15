@@ -32,8 +32,9 @@
         </div>
         <hr/>
       </div>
-      <div id="post<%=post.id%>-comments-container"
-      <%= render post.comments, post: post %>
+      <div id="post<%=post.id%>-comments-container">
+        <%= render post.comments, post: post, organization: @organization, project: @project %>
+      </div>
       <%= render "comments/form", post: post %>
     </div>
   </div>

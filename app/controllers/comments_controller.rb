@@ -2,19 +2,14 @@ class CommentsController < ApplicationController
 
 
   def create
-    byebug
-    project = Project.find(params[:project_id])
-    organization = project.organization
+    @project = Project.find(params[:project_id])
+    @organization = @project.organization
     @post = Post.find(params[:post_id])
-    comment = @post.comments.build(comment_params)
-    comment.user_id = current_user.id
+    @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
     
-    
-    
-    if comment.save
+    if @comment.save
       respond_to do |format|
-        byebug
-
         format.js
       end
     else 

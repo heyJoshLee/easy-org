@@ -1,2 +1,3 @@
+$("#post<%=@post.id%>-comments-container").append("<%= j (render partial: 'comment', locals: { comment: @comment, post: @post, organization: @organization, project: @project})%>");
+
 $("#post-<%=@post.id%>-form").val("");
-console.log("#post-<%=@post.id%>-form");

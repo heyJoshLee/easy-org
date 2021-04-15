@@ -23,6 +23,7 @@ class StickyMessagesController < ApplicationController
 
   def destroy
     @sticky_message = StickyMessage.find(params[:id])
+    @sticky_message.destroy
     respond_to do |format|
       format.js
     end
