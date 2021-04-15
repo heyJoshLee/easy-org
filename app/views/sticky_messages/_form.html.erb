@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<i class="fas fa-plus"></i>   New Sticky
+</button>
+</br>
+</br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">New Sticky</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>New Sticky</h2>
+        <%= form_with(model: @sticky_message, local: true) do |f| %>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: "form-control" %>
+          </div>
+          <%= hidden_field_tag :sticky_type, @sticky_type  %>
+          <%= hidden_field_tag :sticky_type_id, @sticky_type_id  %>
+        
+          <%= f.submit(@sticky_message.new_record? ? "Create Sticky" : "Update", class: "btn btn-primary") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

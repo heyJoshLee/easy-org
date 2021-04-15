@@ -24,6 +24,9 @@ class ProjectsController < ApplicationController
     @complete_posts = @project.posts.where(status: "Complete").paginate(page: params[:page], per_page: 5)
     @organization = @project.organization
     @messages = @project.messages
+    @sticky_message = StickyMessage.new
+    @sticky_type = "project"
+    @sticky_type_id = @project.id
   end
 
 

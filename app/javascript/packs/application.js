@@ -16,13 +16,16 @@ Turbolinks.start()
 ActiveStorage.start()
 
 export const scroll_bottom = () => {
-  let childrenNum = $("#messages-container").children.length;
-  if (childrenNum > 0) {
-    $("#chatbox-id").scrollTop($("#messages-container p").last().scrollHeight);
+  let messageNum = $(".message").length;
+  console.log(messageNum)
+  if (messageNum > 0) {
+    console.log($(".message").last()[0].scrollHeight)
+    $("#messages-container").scrollTop = 10000;
+    console.log("done")
   }
 }
 
 
 $(document).on('turbolinks:load', function() {
-  scroll_bottom();  
+    scroll_bottom();  
 });

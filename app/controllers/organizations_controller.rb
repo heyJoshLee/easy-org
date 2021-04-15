@@ -20,6 +20,9 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    @sticky_message = StickyMessage.new
+    @sticky_type = "organization"
+    @sticky_type_id = @organization.id
   end
 
   def index

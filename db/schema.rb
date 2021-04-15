@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_143053) do
+ActiveRecord::Schema.define(version: 2021_04_15_035320) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2021_04_13_143053) do
     t.integer "organization_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sticky_messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "body"
+    t.string "sticky_type"
+    t.integer "sticky_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sticky_type", "sticky_id"], name: "index_sticky_messages_on_sticky"
   end
 
   create_table "users", force: :cascade do |t|

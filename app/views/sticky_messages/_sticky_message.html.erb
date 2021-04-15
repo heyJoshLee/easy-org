@@ -1,0 +1,23 @@
+<div class="accordion" id="accordionExample">
+<div class="card">
+  <div class="card-header" id="headingOne">
+  <div class="row">
+    <h2 class="mb-0">
+      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#sticky_message-<%=sticky_message.id%>" aria-expanded="true" aria-controls="sticky_message-<%=sticky_message.id%>">
+        <%= sticky_message.title %> 
+      </button>
+    </h2>
+  </div>
+  </div>
+  <div id="sticky_message-<%=sticky_message.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="card-body">
+      <small class="badge badge-pill badge-secondary"><%=sticky_message.user.username + " @ " + sticky_message.created_at.to_s%></small></br>
+      <div class="row">
+        <div class="col-2"> <%=gravatar_for(sticky_message.user)%> </div> 
+        <div class="col"> <%= sticky_message.body %> </div>
+      </div>
+      <hr/>
+    </div>
+  </div>
+</div>
+</div>

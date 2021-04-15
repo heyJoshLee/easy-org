@@ -4,25 +4,41 @@
   <div class="col-6">
     <h1><%=@organization.name%>'s Projects</h1>
   </div>
-  <div class="col-6">
-  <%= link_to new_organization_project_path(@organization) do %>
-    <div class="btn btn-primary float-right">
-    <i class="fas fa-plus"></i> Create new Project
-    </div>
-  </div>
-<% end %>
 
+  <div class="col-3">
+    <%= link_to new_organization_project_path(@organization) do %>
+      <div class="btn btn-primary float-right">
+        <i class="fas fa-plus"></i> Create new Project
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-3">
+    <%= link_to users_organization_path(@organization) do %>
+      <div class="btn btn-success float-right">
+        Users
+      </div>
+      <% end %>
+  </div>
 </div>
 
+<div class="row">
+  <div class="col-6">
+    <h2>Stickies</h2>
+  </div>
+  <div class="col-6 float-right">
+    <%= render "sticky_messages/form" %>
+  </div>
+</div>
+<%= render @organization.sticky_messages %>
+
+<hr / >
 
 <section class="flexbox">
   <% @organization.projects.each do |project| %>
-
     <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= link_to project.name, organization_project_path(@organization, project) %></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <%= link_to organization_project_path(@organization, project) do %>
             <div class="btn btn-primary">Enter</div>
           <%end %>

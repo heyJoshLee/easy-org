@@ -4,19 +4,16 @@
   <div class="row">
     <div class="row-cols-7">
         <div class="mt-1 btn btn-sm btn-<%=post.button_color%> "
-        <small><%= post.priority%></small> </br>
+        <small><%= post.priority_word%></small> </br>
       </div> 
     </div>
-
     <h2 class="mb-0">
       <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#post-<%=post.id%>" aria-expanded="true" aria-controls="post-<%=post.id%>">
         <%= post.title %> 
       </button>
     </h2>
   </div>
-
   </div>
-
   <div id="post-<%=post.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
     <div class="card-body">
       <small class="badge badge-pill badge-secondary"><%=post.user.username + " @ " + post.created_at.to_s%></small></br>
@@ -26,11 +23,8 @@
       </div>
       <hr/>
     </div>
-
     <%= render post.comments, post: post %>
     <%= render "comments/form", post: post %>
-
   </div>
-
 </div>
 </div>

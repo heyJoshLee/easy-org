@@ -6,6 +6,17 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 50}, uniqueness: { case_sensitive: false }
   validates :body, presence: true, length: { minimum: 3, maximum: 5000}, uniqueness: { case_sensitive: false }
 
+  def priority_word
+    if priority == 4
+      "Low"
+    elsif priority == 3
+      "Medium"
+    elsif priority == 2
+      "High"
+    else
+      "Urgent"
+    end
+  end
 
   def button_color
     if priority == 4

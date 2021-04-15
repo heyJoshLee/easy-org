@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   get "logout", to: "sessions#destroy"
   get "my_organizations", to: "pages#my_organizations"
+  resources :sticky_messages
   resources :organizations do
     member do
       get "users"

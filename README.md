@@ -1,7 +1,6 @@
 # Todo
 
 - chat feature scroll to bottom, notifications, etc...
-- Finish chat feature
 - Add sticky message for projects
 - WYSIWYG Editor for posts and sticky message
 - Add update and delete for resources
