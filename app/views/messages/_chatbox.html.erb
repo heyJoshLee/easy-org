@@ -1,11 +1,18 @@
 <div id="chatbox-id" data-room-id="<%=@project.id%>" class="chatbox-container">
   <div class="card">
-    <div class="card-header primary" id="headingOne">
-      <h5 class="mb-0">
-        <button id="chatbox-launch" class="btn btn-link" data-toggle="collapse" data-target="#chatbox" aria-expanded="true" aria-controls="chatbox">
-          Chat
-        </button>
-      </h5>
+    <div id="chatbox-notification-bar pusle" class="card-header primary" id="headingOne">
+      <div class="row">
+        <div class="col-3">
+          <h5 class="mb-0">
+            <button id="chatbox-launch" class="btn btn-link" data-toggle="collapse" data-target="#chatbox" aria-expanded="true" aria-controls="chatbox">
+              Chat
+            </button>
+          </h5>
+        </div>
+        <div class="col-9" id="online-chatters">
+        </div>
+      </div>
+
     </div>
     <div id="chatbox" class="collapse" aria-labelledby="headingOne" data-parent="#chatbox-id">
       <div id="messages-container" class="card-body chatbox-content">

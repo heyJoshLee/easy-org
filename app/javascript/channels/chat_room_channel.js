@@ -8,18 +8,25 @@ $(document).on('turbolinks:load', function() {
     channel: "ChatRoomChannel",
     room_id: document.getElementById("chatbox-id").getAttribute("data-room-id")
     }, {
-    connected() {
-  
+    connected(data) {
+      console.log(data)
+      let imgSource = $('#user-profile-image-container img').attr('src');
+      $('#online-chatters').append(`<img class="chatter-image" src='${imgSource}' />`);
+      console.log(imgSource);
     },
   
     disconnected() {
-      // Called when the subscription has been terminated by the server
+      let imgSource = $('#user-profile-image-container img').attr('src');
+      $(`img[src$='${imageSource}']`).remove();
     },
   
     received(data) {
       console.log(data)
+      let audio = new Audio('message-notification.mp3');
+      audio.play();
       $("#messages-container").append(`<p>${data.user}: ${data.body}</p>`);
       $("#chatbox-input-field").val("");
+
     }
   });
   

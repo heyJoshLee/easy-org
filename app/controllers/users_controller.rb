@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :require_user, only: [:create, :edit, :update ]
+  before_action :set_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -21,10 +24,15 @@ class UsersController < ApplicationController
 
 
   def edit
-    if !logged_in?
-      # redirect to login page
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Your acount information was updated."
+      redirect_to edit_user_path(@user)
     else
-      # do cool stuff
+      flash.now[:danger] = "There was a problem and your account was not updated."
+      render 'edit'
     end
   end
   
@@ -32,6 +40,10 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+
+  def set_user
+    @user = current_user  
   end
 
 end
